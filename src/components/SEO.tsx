@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 
 export interface SEOProps {
   title: string;
@@ -33,16 +32,16 @@ export const SEO: React.FC<SEOProps> = ({
   const siteName = 'FitFlow - Fitness & Exercise Blog';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const metaKeywords = keywords.length > 0 ? keywords.join(', ') : 'fitness, exercise, workouts, health, wellness, nutrition';
-  
+
   return (
-    <Helmet>
+    <>
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={metaKeywords} />
       <meta name="author" content={author} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
-      
+
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
@@ -52,7 +51,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:site_name" content={siteName} />
       {publishedAt && <meta property="article:published_time" content={publishedAt} />}
       {modifiedAt && <meta property="article:modified_time" content={modifiedAt} />}
-      
+
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />
@@ -60,7 +59,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:image" content={image} />
       <meta name="twitter:site" content="@fitflow" />
       <meta name="twitter:creator" content="@fitflow" />
-      
+
       {/* Article Meta Tags */}
       {type === 'article' && (
         <>
@@ -69,10 +68,10 @@ export const SEO: React.FC<SEOProps> = ({
           <meta property="article:tag" content={metaKeywords} />
         </>
       )}
-      
+
       {/* Canonical URL */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      
+
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -102,6 +101,6 @@ export const SEO: React.FC<SEOProps> = ({
           },
         })}
       </script>
-    </Helmet>
+    </>
   );
 };

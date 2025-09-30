@@ -34,7 +34,6 @@ A modern, responsive fitness blog built with React, TypeScript, and Tailwind CSS
 - **State Management**: Zustand with persistence
 - **Animations**: Framer Motion
 - **Routing**: React Router v6
-- **SEO**: React Helmet Async
 - **Icons**: Lucide React
 - **Development**: ESLint, TypeScript
 

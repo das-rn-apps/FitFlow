@@ -8,6 +8,12 @@ export interface SEOProps {
   image?: string;
   url?: string;
   type?: 'website' | 'article' | 'profile';
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    author: string;
+    tags: string[];
+  };
   publishedAt?: string;
   modifiedAt?: string;
   twitterCard?: 'summary' | 'summary_large_image';
@@ -22,6 +28,12 @@ export const SEO: React.FC<SEOProps> = ({
   author = 'FitFlow',
   image = '/images/og-image.jpg',
   url = typeof window !== 'undefined' ? window.location.href : '',
+  article = {
+    publishedTime: "",
+    modifiedTime: "",
+    author: "author",
+    tags: ["dd", "sas"]
+  },
   type = 'website',
   publishedAt,
   modifiedAt,
@@ -32,7 +44,6 @@ export const SEO: React.FC<SEOProps> = ({
   const siteName = 'FitFlow - Fitness & Exercise Blog';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const metaKeywords = keywords.length > 0 ? keywords.join(', ') : 'fitness, exercise, workouts, health, wellness, nutrition';
-
   return (
     <>
       {/* Basic Meta Tags */}
@@ -66,6 +77,8 @@ export const SEO: React.FC<SEOProps> = ({
           <meta property="article:author" content={author} />
           <meta property="article:section" content="Fitness" />
           <meta property="article:tag" content={metaKeywords} />
+          <meta property="article:pubTime" content={article.publishedTime} />
+          <meta property="article:modTime" content={article.modifiedTime} />
         </>
       )}
 
